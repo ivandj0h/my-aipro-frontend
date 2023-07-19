@@ -1,17 +1,16 @@
-import './globals.css'
 import React from "react";
-import type {Metadata} from 'next'
-import {Inter} from 'next/font/google'
-import Providers from "@/lib/hook/Providers";
+import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
+import NavBarComponent from "@/components/layouts/NavBar";
 
-const inter = Inter({subsets: ['latin']})
+const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-    title: 'AI projects App',
+    title: 'AI projects App - Dashboard',
     description: 'AI projects Management App',
 }
 
-export default function RootLayout({
+export default function DashboardLayout({
                                        children,
                                    }: {
     children: React.ReactNode
@@ -19,9 +18,8 @@ export default function RootLayout({
     return (
         <html lang="en">
         <body className={inter.className}>
-        <Providers>
+            <NavBarComponent />
             {children}
-        </Providers>
         </body>
         </html>
     )
