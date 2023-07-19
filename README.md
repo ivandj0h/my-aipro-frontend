@@ -20,7 +20,8 @@ reports of the project's status, progress, and other key performance indicators 
 6. Enjoy!
 
 ## Screenshots  
-`Still on development...`
+![Project Workflow](./public/workflow.png)
+
 ## License
 MIT License
 
