@@ -1,9 +1,11 @@
-export default function Home() {
+import React, {JSX} from "react";
+
+const HomePage: React.FC = (): JSX.Element => {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <h3 className="text-3xl font-bold text-center text-white">AI Project App</h3>
-      </div>
+        <h3>AI Project App</h3>
     </main>
   )
 }
+
+export default HomePage;
