@@ -19,8 +19,13 @@ reports of the project's status, progress, and other key performance indicators 
 5. Logout
 6. Enjoy!
 
-## Screenshots  
-![Project Workflow](./public/workflow.png)
+## Screenshots
+
+#### Workflow Screenshots
+![Project Workflow](./public/workflow.png)  
+
+#### Login Screen
+![Login Screen](./public/login.png)
 
 ## License
 MIT License
