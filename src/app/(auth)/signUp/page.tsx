@@ -52,7 +52,8 @@ const SignUpPage: React.FC = (): JSX.Element => {
         <div className="max-w-md w-full space-y-4">
             <div className="w-full max-w-lg">
                 <div className="flex flex-col justify-center bg-white rounded-lg p-8 gap-[24px] shadow-2xl">
-                    <h3 className="text-lg font-bold text-left">Register</h3>
+                    <h1 className="text-lg font-bold text-center text-blue-700">AI Project Management</h1>
+                    <h3 className="text-lg font-bold text-center" style={{ 'marginTop': '-26px' }}>Register</h3>
                     <form onSubmit={onSubmit}>
                         <TextBox
                             id="txt1"

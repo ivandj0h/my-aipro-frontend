@@ -2,16 +2,17 @@
 
 import React, {JSX, useContext, useRef, useState} from "react";
 import {toast, ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import TextBox from "@/components/utils/TextBox";
 import Button from "@/components/utils/Button";
 import {SignUpContext} from "@/lib/hook/SignUpContext";
 import {signIn} from "next-auth/react";
 
 const LoginPage: React.FC = (): JSX.Element => {
-
     const [isLoading, setIsLoading] = useState(false);
     const userName = useRef("");
     const pass = useRef("");
+
     const {showSignUp, setShowSignUp} = useContext(SignUpContext);
 
     const handleSignUp = () => {
@@ -20,27 +21,36 @@ const LoginPage: React.FC = (): JSX.Element => {
 
     const onSubmit = async (event: any) => {
         event.preventDefault();
-        setIsLoading(true);
 
-        try {
-            const result = await signIn("credentials", {
-                username: userName.current,
-                password: pass.current,
-                redirect: true,
-                callbackUrl: "/",
-            });
+        console.log(userName.current);
+        console.log(pass.current);
 
-            if (result?.error) {
-                toast.error(`Error signing in: ${result.error}`);
-                setIsLoading(false);
-            } else {
-                toast.success("Successfully signed in!");
-            }
-        } catch (error) {
-            console.error("Error signing in:", error);
-            toast.error("Error signing in. Please check your credentials and try again.");
-            setIsLoading(false);
+        if (userName.current === '' || pass.current === '') {
+            toast.error("Please enter email and password");
+            return;
         }
+
+        // setIsLoading(true);
+        //
+        // try {
+        //     const result = await signIn("credentials", {
+        //         username: userName.current,
+        //         password: pass.current,
+        //         redirect: true,
+        //         callbackUrl: "/",
+        //     });
+        //
+        //     if (result?.error) {
+        //         toast.error(`Error signing in: ${result.error}`);
+        //         setIsLoading(false);
+        //     } else {
+        //         toast.success("Successfully signed in!");
+        //     }
+        // } catch (error) {
+        //     console.error("Error signing in:", error);
+        //     toast.error("Error signing in. Please check your credentials and try again.");
+        //     setIsLoading(false);
+        // }
     };
 
     return (
@@ -62,11 +72,11 @@ const LoginPage: React.FC = (): JSX.Element => {
                 </div>
                 <ToastContainer
                     position="top-center"
-                    autoClose={5000}
+                    autoClose={1000}
                 />
             </div>
         </div>
-    )
+    );
 }
 
 export default LoginPage;
