@@ -5,6 +5,8 @@ import BrandLogo from "@/components/brand/BrandLogo";
 import {useRouter} from "next/navigation";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Cookies from "js-cookie";
+import {login} from "@/utils/auth/AuthService";
 
 const LoginPage: React.FC = (): JSX.Element => {
     const [email, setEmail] = useState('');
@@ -14,7 +16,31 @@ const LoginPage: React.FC = (): JSX.Element => {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log("Login");
+
+        try {
+            setIsLoading(true);
+            const response = await login(email, password);
+            // Cookies.set('token', token, { secure: process.env.NODE_ENV === 'production' });
+            const token = response.access_token;
+            Cookies.set('token', token);
+            const tokenName = Cookies.get('token');
+
+            toast.success("Login Success!");
+            setIsLoading(false);
+
+            setTimeout(() => {
+                router.push("/dashboard");
+            }, 2000);
+        } catch (error) {
+            // @ts-ignore
+            console.error(error.message);
+            toast.error("Invalid login credentials. Please try again!");
+        }
+
+        setIsLoading(false);
+
+        setEmail("");
+        setPassword("");
     }
     return (
         <main className="min-h-screen flex items-center justify-center bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { JSX } from "react";
-import LoginPage from "@/app/(auth)/login/page";
+import LoginPage from "@/app/login/page";
 
 const HomePage: React.FC = (): JSX.Element => {
   return (
